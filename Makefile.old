@@ -1,0 +1,35 @@
+TARGET_CURR = all
+TARGET_BASIC = basic
+TARGET_MUTEX = mutex
+OBJ_BASIC = basic.o
+SRC_BASIC = basic.c
+OBJ_MUTEX = mutex.o
+SRC_MUTEX = mutex.c
+BUILD_DIR = obj
+SRC_DIR = src
+APP_DIR = app
+LIBS = -lpthread
+CFLAGS = -Wall
+
+all: $(TARGET_BASIC) $(TARGET_MUTEX)
+
+default : $(TARGET_BASIC)
+
+$(TARGET_BASIC): $(BUILD_DIR)/$(OBJ_BASIC)
+	gcc $(CFLAGS) $(BUILD_DIR)/$(OBJ_BASIC) $(LIBS) -o $(APP_DIR)/$(TARGET_BASIC)
+
+
+$(BUILD_DIR)/$(OBJ_BASIC): $(SRC_DIR)/$(SRC_BASIC)
+	gcc -c $(SRC_DIR)/$(SRC_BASIC) $(LIBS) -o $(BUILD_DIR)/$(OBJ_BASIC)
+
+
+$(TARGET_MUTEX): $(BUILD_DIR)/$(OBJ_MUTEX)
+	gcc $(CFLAGS) $(BUILD_DIR)/$(OBJ_MUTEX) $(LIBS) -o $(APP_DIR)/$(TARGET_MUTEX)
+
+
+$(BUILD_DIR)/$(OBJ_MUTEX): $(SRC_DIR)/$(SRC_MUTEX)
+	gcc -c $(SRC_DIR)/$(SRC_MUTEX) $(LIBS) -o $(BUILD_DIR)/$(OBJ_MUTEX)
+
+.PHONY: clean
+clean:
+	rm -f $(BUILD_DIR)/*.o $(APP_DIR)/*
