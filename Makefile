@@ -4,7 +4,7 @@ APP_DIR = app
 LIBS = -lpthread
 CFLAGS = -Wall
 
-all: basic mutex
+all: basic mutex args
 
 default: all
 

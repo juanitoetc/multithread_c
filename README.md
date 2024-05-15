@@ -11,6 +11,7 @@ Run the manual commands to compile or use simple the Makefile
 ### Manual
 `gcc src/basic.c -lpthread -o app/basic`
 `gcc src/mutex.c -lpthread -o app/mutex`
+`gcc src/args.c -lpthread -o app/args`
 
 ### Makefile
 `make`
@@ -18,6 +19,7 @@ Run the manual commands to compile or use simple the Makefile
 ## Run
 `apps/basic`
 `apps/mutex`
+`apps/args`
 
 ## Delete
 `make clean`
